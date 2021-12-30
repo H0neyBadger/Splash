@@ -1,4 +1,10 @@
 
+#ifndef GAME_H
+#define GAME_H
+
+#include <cstddef>
+#include <cstdint>
+
 #include "il2cpp.h"
 // linked by the linkerscript
 
@@ -36,3 +42,5 @@ GameManager__get_mapInfo(const MethodInfo* method);
 
 DPData_PLAYER_DATA_o*
 PlayerWork__get_playerData(const MethodInfo* method);
+
+#endif // ndef GAME_H

@@ -13,7 +13,7 @@ Support:
 # Build
 It requires DEVKITPRO environment
 ```
-make all
+make all -j4
 ```
 
 # Install

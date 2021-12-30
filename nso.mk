@@ -39,7 +39,7 @@ ifeq ($(RELEASE), 1)
   CFLAGS += -DNDEBUG
 endif
 
-CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions
+CXXFLAGS	:= $(CFLAGS) -fno-rtti  # -fno-exceptions
 
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS  =  -specs=../../../switch.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
