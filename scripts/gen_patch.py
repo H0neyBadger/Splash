@@ -293,7 +293,7 @@ def load_config(version, title_id):
 
     # parse /build/100/xxxx/*.map
     map_regex = re.compile(
-        r"[\t ]+(?P<offset>0x[0-9a-fA-F]+)\s+(?P<signature>[^ ]+\s?\(.*\))[\t ]*"
+        r"(?P<offset>0x[0-9a-fA-F]+)\s+(?P<signature>[^ ]+\s?(\(.*\))?)"
     )
 
     for built_hook_map in glob(f"./build/{version}/{title_id}/*.map"):
@@ -303,6 +303,7 @@ def load_config(version, title_id):
 
         with open(built_hook_map, "r", encoding="utf-8") as file:
             for line in file:
+                line = line.strip()
                 match = map_regex.match(line)
                 if match:
                     Symbol(

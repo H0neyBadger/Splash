@@ -27,24 +27,20 @@ LINKERSCRIPTS   :=      linkerscripts
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
-ARCH	:=	-march=armv8-a -mtune=cortex-a57 -mtp=soft -fPIE
+ARCH	:=	-march=armv8-a -mtune=cortex-a57 -mtp=soft -fPIC -ftls-model=local-exec
 
 CFLAGS	:=	-g -Wall -ffunction-sections \
 			$(ARCH) $(DEFINES)
 
 CFLAGS	+=	$(INCLUDE) -D__SWITCH__ -DVER=$(VER) -DTITLE_ID=$(TITLE_ID)
-RELEASE ?= 0
 
-ifeq ($(RELEASE), 1)
-  CFLAGS += -DNDEBUG
-endif
-
-CXXFLAGS	:= $(CFLAGS) -fno-rtti  # -fno-exceptions
+CXXFLAGS	:= $(CFLAGS) -fno-rtti -enable-libstdcxx-allocator=new -fomit-frame-pointer -fno-asynchronous-unwind-tables
 
 ASFLAGS	:=	-g $(ARCH)
-LDFLAGS  =  -specs=../../../switch.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
+LDFLAGS  =  -specs=../../../switch.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map) -Wl,--version-script=$(TOPDIR)/exported.txt -Wl,-init=__custom_init -Wl,-fini=__custom_fini -Wl,--export-dynamic -nodefaultlibs
 
-LIBS	:= -lnx
+
+LIBS	:= -lgcc -lstdc++ -u malloc
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
@@ -147,7 +143,6 @@ DEPENDS	:=	$(OFILES:.o=.d)
 #---------------------------------------------------------------------------------
 
 %.nso: %.elf
-	python3 $(TOPDIR)/scripts/fixmod0.py $<
 	@elf2nso $< $@
 	@echo built ... $(notdir $@)
 #---------------------------------------------------------------------------------

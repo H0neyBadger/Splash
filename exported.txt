@@ -1,0 +1,8 @@
+{
+    global:
+        __custom_init;
+        __custom_fini;
+	hook_Initialize;
+	hook__Dpr_Item_ItemInfo__SubItem;
+    local: *;
+};  
