@@ -293,7 +293,7 @@ def load_config(version, title_id):
 
     # parse /build/100/xxxx/*.map
     map_regex = re.compile(
-        r"(?P<offset>0x[0-9a-fA-F]+)\s+(?P<signature>[^ ]+\s?(\(.*\))?)"
+        r"^(?P<offset>0x[0-9a-fA-F]+)\s+(?P<signature>[^0-9 ().:][^ ()]*(\s?\(.*\))?)$"
     )
 
     for built_hook_map in glob(f"./build/{version}/{title_id}/*.map"):
