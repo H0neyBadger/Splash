@@ -11,4 +11,8 @@ void hook__Pml_PokePara_Factory__FixInitSpec(Pml_PokePara_InitialSpec_o* pFixSpe
 
 extern "C" void hook_Initialize();
 
+extern "C" int32_t hook_PlayerWork__get_defaultPokeNo(const MethodInfo* method);
+extern "C" int32_t hook_PlayerWork__get_rivalPokeNo(const MethodInfo* method);
+extern "C" int32_t hook_PlayerWork__get_supportPokeNo(const MethodInfo* method);
+
 #endif  // ndef HOOK_H

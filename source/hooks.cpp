@@ -34,3 +34,40 @@ extern "C" void hook_Initialize() {
     }
     return;
 }
+
+extern "C" void hook_Pml_PokePara_PokemonParam___ctor(Pml_PokePara_PokemonParam_o* __this, int32_t monsno,
+                                                      uint16_t level, uint64_t id, const MethodInfo* method) {
+    // hook hardcoded pokemons
+    if (monsno != 0) {
+        Pokemons* pokemon = Pokemons::GetInstance();
+        monsno = pokemon->GetRandom((uint16_t)monsno);
+    }
+    Pml_PokePara_PokemonParam___ctor(__this, monsno, level, id, method);
+}
+
+extern "C" int32_t hook_PlayerWork__get_defaultPokeNo(const MethodInfo* method) {
+    int32_t monsno = PlayerWork__get_defaultPokeNo(method);
+    if (monsno != 0) {
+        Pokemons* pokemon = Pokemons::GetInstance();
+        return pokemon->GetRandom((uint16_t)monsno);
+    }
+    return monsno;
+}
+
+extern "C" int32_t hook_PlayerWork__get_rivalPokeNo(const MethodInfo* method) {
+    int32_t monsno = PlayerWork__get_rivalPokeNo(method);
+    if (monsno != 0) {
+        Pokemons* pokemon = Pokemons::GetInstance();
+        return pokemon->GetRandom((uint16_t)monsno);
+    }
+    return monsno;
+}
+
+extern "C" int32_t hook_PlayerWork__get_supportPokeNo(const MethodInfo* method) {
+    int32_t monsno = PlayerWork__get_supportPokeNo(method);
+    if (monsno != 0) {
+        Pokemons* pokemon = Pokemons::GetInstance();
+        return pokemon->GetRandom((uint16_t)monsno);
+    }
+    return monsno;
+}

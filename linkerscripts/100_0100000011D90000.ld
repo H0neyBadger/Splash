@@ -12,3 +12,9 @@ _Z32GameManager__GetFieldEncountDataiPK10MethodInfo = 0x1E366D0 - 0x545F000; /* 
 _Z26PlayerWork__get_playerDataPK10MethodInfo = 0x1BBB580 - 0x545F000; /* DPData_PLAYER_DATA_o * PlayerWork__get_playerData(const MethodInfo * method) */
 
 _Z24GameManager__get_mapInfoPK10MethodInfo = 0x1E2FD00 - 0x545F000; /* XLSXContent_MapInfo_o * GameManager__get_mapInfo(const MethodInfo * method) */
+
+
+_Z32Pml_PokePara_PokemonParam___ctorP27Pml_PokePara_PokemonParam_oitmPK10MethodInfo = 0x23B8130 - 0x545F000; /* void Pml_PokePara_PokemonParam___ctor(Pml_PokePara_PokemonParam_o * __this, int32_t monsno, uint16_t level, uint64_t id, const MethodInfo * method) */
+_Z29PlayerWork__get_defaultPokeNoPK10MethodInfo = 0x1BBBBB0 - 0x545F000; /* int32_t PlayerWork__get_defaultPokeNo(const MethodInfo * method) */
+_Z27PlayerWork__get_rivalPokeNoPK10MethodInfo = 0x1BBBF30 - 0x545F000; /* int32_t PlayerWork__get_rivalPokeNo(const MethodInfo * method) */
+_Z29PlayerWork__get_supportPokeNoPK10MethodInfo = 0x1BBC1A0 - 0x545F000; /* int32_t PlayerWork__get_supportPokeNo(const MethodInfo * method) */

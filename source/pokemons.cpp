@@ -29,21 +29,20 @@ void Pokemons::RandomizePokemonMap() {
 
 uint16_t Pokemons::GetRandom(uint16_t in) {
     // return value from shuffled map
-    if (in > POKEMON_COUNT) {
+    if (in > POKEMON_COUNT || in < 1) {
         throw "Invalid pokemon";
     }
-
     return this->map[in - 1];
 };
 
 void Pokemons::RandomizeMonsLvArray(MonsLv_array* mons) {
     il2cpp_array_size_t len = mons->max_length;
-
+    int32_t rand_mons;
     for (uint32_t idx = 0; idx < len; idx++) {
         MonsLv_Fields* obj = &(mons->m_Items[idx].fields);
-        int32_t rand_mons = this->GetRandom(obj->monsNo);
 
         if (obj->monsNo != 0) {
+            rand_mons = this->GetRandom(obj->monsNo);
             // obj->maxlv += 1;
             // obj->minlv = obj->maxlv;
             obj->monsNo = rand_mons;

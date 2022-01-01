@@ -29,4 +29,12 @@ extern XLSXContent_MapInfo_o* GameManager__get_mapInfo(const MethodInfo* method)
 
 extern DPData_PLAYER_DATA_o* PlayerWork__get_playerData(const MethodInfo* method);
 
+
+extern void Pml_PokePara_PokemonParam___ctor (Pml_PokePara_PokemonParam_o* __this, int32_t monsno, uint16_t level, uint64_t id, const MethodInfo* method);
+extern int32_t PlayerWork__get_defaultPokeNo (const MethodInfo* method);
+extern int32_t PlayerWork__get_rivalPokeNo (const MethodInfo* method);
+extern int32_t PlayerWork__get_supportPokeNo(const MethodInfo* method);
+
+int32_t GetTrainerId();
+
 #endif  // ndef GAME_H
