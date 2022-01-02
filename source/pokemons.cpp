@@ -1,6 +1,7 @@
 
 #include "splash/pokemons.hpp"
 
+#include "splash/evolve_table.hpp"
 #include "splash/operator.hpp"
 #include "splash/random.hpp"
 
@@ -27,25 +28,36 @@ void Pokemons::RandomizePokemonMap() {
     rand.ShuffleList(&this->map[0], POKEMON_COUNT);
 };
 
-uint16_t Pokemons::GetRandom(uint16_t in) {
+uint16_t Pokemons::GetRandom(uint16_t monsno) {
     // return value from shuffled map
-    if (in > POKEMON_COUNT || in < 1) {
+    if (monsno > POKEMON_COUNT || monsno < 1) {
         throw "Invalid pokemon";
     }
-    return this->map[in - 1];
+    return this->map[monsno - 1];
+};
+
+uint16_t Pokemons::GetRandom(uint16_t monsno, uint8_t level) {
+    // Fix impossible pokemon level
+    uint16_t mons = this->GetRandom(monsno);
+    evolve ev = {.prevmons = 0, .prevlvl = 0};
+    do {
+        ev = evolve_table[mons - 1];
+        if (ev.prevlvl > level) {
+            mons = ev.prevmons;
+        }
+    } while (ev.prevmons != 0 && ev.prevlvl > level);
+    return mons;
 };
 
 void Pokemons::RandomizeMonsLvArray(MonsLv_array* mons) {
     il2cpp_array_size_t len = mons->max_length;
-    int32_t rand_mons;
     for (uint32_t idx = 0; idx < len; idx++) {
         MonsLv_Fields* obj = &(mons->m_Items[idx].fields);
 
         if (obj->monsNo != 0) {
-            rand_mons = this->GetRandom(obj->monsNo);
             // obj->maxlv += 1;
             // obj->minlv = obj->maxlv;
-            obj->monsNo = rand_mons;
+            obj->monsNo = this->GetRandom(obj->monsNo, obj->maxlv);
         }
     }
 };

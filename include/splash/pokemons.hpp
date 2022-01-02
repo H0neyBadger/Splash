@@ -22,7 +22,9 @@ class Pokemons {
     void operator=(const Pokemons&) = delete;
     static Pokemons* GetInstance();
 
-    uint16_t GetRandom(uint16_t in);
+    uint16_t GetRandom(uint16_t monsno);
+    uint16_t GetRandom(uint16_t monsno, uint8_t level);
+
     XLSXContent_FieldEncountTable_Sheettable_o* RandomizeGameManagerEncountData(int32_t zoneid);
 };
 
