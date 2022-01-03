@@ -1,6 +1,40 @@
+#ifndef TABLES_H
+#define TABLES_H
+
+#include <stdint.h>
+
 struct evolve {
     uint16_t prevmons;
     uint8_t prevlvl;
+};
+
+struct trainer_poke {
+    uint16_t MonsNo;
+    uint16_t FormNo;
+    bool IsRare;
+    uint8_t Level;
+    uint8_t Sex;
+    uint8_t Seikaku;
+    uint16_t Tokusei;
+    uint16_t Waza1;
+    uint16_t Waza2;
+    uint16_t Waza3;
+    uint16_t Waza4;
+    uint16_t Item;
+    uint8_t Ball;
+    int32_t Seal;
+    uint8_t TalentHp;
+    uint8_t TalentAtk;
+    uint8_t TalentDef;
+    uint8_t TalentSpAtk;
+    uint8_t TalentSpDef;
+    uint8_t TalentAgi;
+    uint8_t EffortHp;
+    uint8_t EffortAtk;
+    uint8_t EffortDef;
+    uint8_t EffortSpAtk;
+    uint8_t EffortSpDef;
+    uint8_t EffortAgi;
 };
 
 const static evolve evolve_table[] = {
@@ -498,3 +532,5 @@ const static evolve evolve_table[] = {
     {.prevmons = 0, .prevlvl = 0},     // Pokémon: 492
     {.prevmons = 0, .prevlvl = 0},     // Pokémon: 493
 };
+
+#endif  // ndef TABLEs_H

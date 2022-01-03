@@ -1,6 +1,7 @@
 #include "splash/hooks.hpp"
 
 #include "splash/pokemons.hpp"
+#include "splash/tables.hpp"
 
 extern "C" int32_t hook__Dpr_Item_ItemInfo__SubItem(Dpr_Item_ItemInfo_o* __this, int32_t num,
                                                     const MethodInfo* method) {
@@ -25,6 +26,7 @@ int32_t GetTrainerId() {
 extern "C" void hook_Initialize() {
     Pokemons* pokemon = Pokemons::GetInstance();
 
+    // randomize encouter
     XLSXContent_MapInfo_o* map_info = GameManager__get_mapInfo(0);
     XLSXContent_MapInfo_SheetZoneData_array* zone_data = map_info->fields.ZoneData;
     il2cpp_array_size_t len = zone_data->max_length;
@@ -32,6 +34,12 @@ extern "C" void hook_Initialize() {
         int32_t zone_id = zone_data->m_Items[idx]->fields.ZoneID;
         pokemon->RandomizeGameManagerEncountData(zone_id);
     }
+
+    // randomize trainers
+    for (uint16_t idx = 706; idx > 0; idx--) {
+        pokemon->RandomizeTrainerPoke(idx);
+    }
+
     return;
 }
 

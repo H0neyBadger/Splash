@@ -10,8 +10,9 @@ _Z24PlayerWork__get_uniqueIDPK10MethodInfo = 0x1BB7D20 - 0x545F000; /* uint32_t 
 _Z32GameManager__GetFieldEncountDataiPK10MethodInfo = 0x1E366D0 - 0x545F000; /* XLSXContent_FieldEncountTable_Sheettable_o * GameManager__GetFieldEncountData(int32_t zoneid, const MethodInfo * method) */
 
 _Z26PlayerWork__get_playerDataPK10MethodInfo = 0x1BBB580 - 0x545F000; /* DPData_PLAYER_DATA_o * PlayerWork__get_playerData(const MethodInfo * method) */
-
 _Z24GameManager__get_mapInfoPK10MethodInfo = 0x1E2FD00 - 0x545F000; /* XLSXContent_MapInfo_o * GameManager__get_mapInfo(const MethodInfo * method) */
+_Z29TrainerSystem__GetTrainerDataiPK10MethodInfo = 0x1CD7420 - 0x545F000; /* XLSXContent_TrainerTable_SheetTrainerData_o * TrainerSystem__GetTrainerData(int32_t trainerID, const MethodInfo * method) */
+_Z29TrainerSystem__GetTrainerPokeiPK10MethodInfo = 0x1CD75A0 - 0x545F000; /* XLSXContent_TrainerTable_SheetTrainerPoke_o * TrainerSystem__GetTrainerPoke(int32_t trainerID, const MethodInfo * method) */
 
 
 _Z32Pml_PokePara_PokemonParam___ctorP27Pml_PokePara_PokemonParam_oitmPK10MethodInfo = 0x23B8130 - 0x545F000; /* void Pml_PokePara_PokemonParam___ctor(Pml_PokePara_PokemonParam_o * __this, int32_t monsno, uint16_t level, uint64_t id, const MethodInfo * method) */

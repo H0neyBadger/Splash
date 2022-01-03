@@ -1,7 +1,6 @@
 
 #include "splash/pokemons.hpp"
 
-#include "splash/evolve_table.hpp"
 #include "splash/operator.hpp"
 #include "splash/random.hpp"
 
@@ -83,5 +82,51 @@ XLSXContent_FieldEncountTable_Sheettable_o* Pokemons::RandomizeGameManagerEncoun
     this->RandomizeMonsLvArray(real->fields.boro_mons);
     this->RandomizeMonsLvArray(real->fields.ii_mons);
     this->RandomizeMonsLvArray(real->fields.sugoi_mons);
+    return real;
+};
+
+void Pokemons::RandomizeTranerPoke(trainer_poke* obj) {
+    if (obj->MonsNo > POKEMON_COUNT || obj->MonsNo < 1) {
+        return;
+    }
+    obj->MonsNo = this->GetRandom(obj->MonsNo, obj->Level);
+    obj->FormNo = 0;
+    // obj->IsRare;
+    // obj->Level;
+    obj->Sex = 3;
+    obj->Seikaku = 0;
+    obj->Tokusei = 0;
+    obj->Waza1 = 0;
+    obj->Waza2 = 0;
+    obj->Waza3 = 0;
+    obj->Waza4 = 0;
+    // obj->Item;
+    // obj->Ball;
+    // obj->Seal;
+    // obj->TalentHp;
+    // obj->TalentAtk;
+    // obj->TalentDef;
+    // obj->TalentSpAtk;
+    // obj->TalentSpDef;
+    // obj->TalentAgi;
+    // obj->EffortHp;
+    // obj->EffortAtk;
+    // obj->EffortDef;
+    // obj->EffortSpAtk;
+    // obj->EffortSpDef;
+    // obj->EffortAgi;
+}
+
+XLSXContent_TrainerTable_SheetTrainerPoke_o* Pokemons::RandomizeTrainerPoke(int32_t trainer_id) {
+    XLSXContent_TrainerTable_SheetTrainerPoke_o* real = TrainerSystem__GetTrainerPoke(trainer_id, 0);
+    if (real == 0) {
+        return 0;
+    }
+    this->RandomizeTranerPoke((trainer_poke*)&(real->fields.P1MonsNo));
+    this->RandomizeTranerPoke((trainer_poke*)&(real->fields.P2MonsNo));
+    this->RandomizeTranerPoke((trainer_poke*)&(real->fields.P3MonsNo));
+    this->RandomizeTranerPoke((trainer_poke*)&(real->fields.P4MonsNo));
+    this->RandomizeTranerPoke((trainer_poke*)&(real->fields.P5MonsNo));
+    this->RandomizeTranerPoke((trainer_poke*)&(real->fields.P6MonsNo));
     return real;
 };
