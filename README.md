@@ -1,6 +1,7 @@
 # Yet another BDSP randomizer
 This project is a technical study.
 It is not intended for general public distribution or high quality randomizer.
+This randomizer uses player's trainer ID as psedo seed to genrate randomness.
 
 This project is basically fork of:
 * https://github.com/skyline-dev/skyline
@@ -10,6 +11,22 @@ and many other project based on skyline ....
 
 Support:
 * Brilliant Diamond v1.1.1
+
+Features:
+* Randomize starters
+* Randomize encounter table
+* Randomize trainer table
+* Avoid impossible level pokemon encounter (i.e: Dragonite lvl3)
+* disable multiexp (default cheat in patches/111/0100000011D90000/patch.ini)
+* CheckShinouZukanCompSee (default cheat in patches/111/0100000011D90000/patch.ini)
+
+Most of 1.1.1's cheat code should work with this project.
+
+TODO:
+* Randomize Field objects
+* configurable seed
+* configurable lengedary
+* (raise an issue if you have any suggestion) ...
 
 # Build
 It requires DEVKITPRO environment
@@ -23,7 +40,7 @@ copy/merge the atmosphere directory with the root of your nintendo switch SD car
 * atmosphere/contents/0100000011D90000/exefs/subsdk1.nso
 ```
 dist/
-└── 100
+└── 111
     └── atmosphere
         ├── contents
         │   └── 0100000011D90000
