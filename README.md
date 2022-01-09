@@ -17,7 +17,6 @@ Features:
 * Randomize encounter table
 * Randomize trainer table
 * Avoid impossible level pokemon encounter (i.e: Dragonite lvl3)
-* disable multiexp (default cheat in patches/111/0100000011D90000/patch.ini)
 * CheckShinouZukanCompSee (default cheat in patches/111/0100000011D90000/patch.ini)
 
 Most of 1.1.1's cheat code should work with this project.
