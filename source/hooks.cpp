@@ -24,6 +24,12 @@ int32_t GetTrainerId() {
 }
 
 extern "C" void hook_Initialize() {
+    int32_t trainer_id = PlayerWork__get_uniqueID(0);
+    if (trainer_id == 0) {
+        // the trainer id is not initialized yet
+        return;
+    }
+
     Pokemons* pokemon = Pokemons::GetInstance();
 
     // randomize encouter
