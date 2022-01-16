@@ -1,5 +1,6 @@
 #include "splash/hooks.hpp"
 
+#include "splash/items.hpp"
 #include "splash/pokemons.hpp"
 #include "splash/tables.hpp"
 
@@ -31,10 +32,12 @@ extern "C" void hook_Initialize() {
     }
 
     Pokemons* pokemon = Pokemons::GetInstance();
+    Items* item = Items::GetInstance();
 
     // randomize encouter
     XLSXContent_MapInfo_o* map_info = GameManager__get_mapInfo(0);
     XLSXContent_MapInfo_SheetZoneData_array* zone_data = map_info->fields.ZoneData;
+
     il2cpp_array_size_t len = zone_data->max_length;
     for (uint32_t idx; idx < len; idx++) {
         int32_t zone_id = zone_data->m_Items[idx]->fields.ZoneID;
@@ -46,6 +49,57 @@ extern "C" void hook_Initialize() {
         pokemon->RandomizeTrainerPoke(idx);
     }
 
+    // randomize field items
+    Dpr_EvScript_EvDataManager_o* ev_instance = Dpr_EvScript_EvDataManager__get_Instanse(0);
+    Dpr_EvScript_EvScriptData_array* event_list = ev_instance->fields._eventList;
+    len = event_list->max_length;
+
+    for (uint32_t idx = 0; idx < len; idx++) {
+        if (event_list->m_Items[idx] == 0) {
+            continue;
+        }
+
+        if (event_list->m_Items[idx]->fields.EvData == 0) {
+            continue;
+        }
+
+        if (event_list->m_Items[idx]->fields.EvData->fields.Scripts == 0) {
+            continue;
+        }
+
+        EvData_Script_array* scripts = event_list->m_Items[idx]->fields.EvData->fields.Scripts->fields._items;
+        il2cpp_array_size_t slen = scripts->max_length;
+
+        for (uint32_t sidx = 0; sidx < slen; sidx++) {
+            EvData_Command_array* commands = scripts->m_Items[sidx]->fields.Commands->fields._items;
+            il2cpp_array_size_t clen = commands->max_length;
+
+            for (uint32_t cidx = 0; cidx < clen; cidx++) {
+                EvData_Aregment_array* args = commands->m_Items[cidx]->fields.Arg->fields._items;
+                il2cpp_array_size_t alen = args->max_length;
+
+                if (alen <= 0) {
+                    continue;
+                }
+
+                int32_t arg_type = args->m_Items[0].fields.argType;
+                if (arg_type != 0) {
+                    // unknown command
+                    continue;
+                }
+                int32_t data = args->m_Items[0].fields.data;
+                switch (data) {
+                    case 187:  // EvMacro_FLD_ITEM_EVEN
+                        if (args->m_Items[1].fields.argType == 1) {
+                            // type arg == 1 ? is float stored in int
+                            float* item_no = (float*)&(args->m_Items[1].fields.data);
+                            *item_no = (float)item->GetRandom((uint16_t)*item_no);
+                        }
+                        break;
+                }
+            }
+        }
+    }
     return;
 }
 

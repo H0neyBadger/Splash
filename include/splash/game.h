@@ -30,6 +30,7 @@ extern XLSXContent_TrainerTable_SheetTrainerData_o* TrainerSystem__GetTrainerDat
                                                                                   const MethodInfo* method);
 extern XLSXContent_TrainerTable_SheetTrainerPoke_o* TrainerSystem__GetTrainerPoke(int32_t trainerID,
                                                                                   const MethodInfo* method);
+extern Dpr_EvScript_EvDataManager_o* Dpr_EvScript_EvDataManager__get_Instanse(const MethodInfo* method);
 
 extern void Pml_PokePara_PokemonParam___ctor(Pml_PokePara_PokemonParam_o* __this, int32_t monsno, uint16_t level,
                                              uint64_t id, const MethodInfo* method);

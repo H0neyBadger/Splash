@@ -9,6 +9,7 @@ _Z28RandomGroupWork__RandomRangeiiPK10MethodInfo = 0x1AD3A40 - 0x56C1000; /* int
 _Z24PlayerWork__get_uniqueIDPK10MethodInfo = 0x1FE6B40 - 0x56C1000; /* uint32_t PlayerWork__get_uniqueID(const MethodInfo * method) */
 
 _Z32GameManager__GetFieldEncountDataiPK10MethodInfo = 0x1A72BD0 - 0x56C1000; /* XLSXContent_FieldEncountTable_Sheettable_o * GameManager__GetFieldEncountData(int32_t zoneid, const MethodInfo * method) */
+_Z40Dpr_EvScript_EvDataManager__get_InstansePK10MethodInfo = 0x173A050 - 0x56C1000; /* Dpr_EvScript_EvDataManager_o * Dpr_EvScript_EvDataManager__get_Instanse(const MethodInfo * no name!) */
 
 _Z26PlayerWork__get_playerDataPK10MethodInfo = 0x1FDC3A0 - 0x56C1000; /* DPData_PLAYER_DATA_o * PlayerWork__get_playerData(const MethodInfo * method) */
 _Z24GameManager__get_mapInfoPK10MethodInfo = 0x1A6C230 - 0x56C1000; /* XLSXContent_MapInfo_o * GameManager__get_mapInfo(const MethodInfo * method) */

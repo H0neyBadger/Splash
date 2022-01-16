@@ -22,7 +22,7 @@ void Random::ShuffleList(uint16_t* lst, uint32_t len) {
         }
 
         // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
-        j = seed % i;  // random in range
+        j = seed % i;  // FIXME modulo is biased
         swap = lst[j];
         lst[j] = lst[i];
         lst[i] = swap;
