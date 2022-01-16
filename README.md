@@ -16,12 +16,12 @@ Features:
 * Randomize starters
 * Randomize encounter table
 * Randomize trainer table
+* Randomize Field items (and hidden items)
 * Avoid impossible level pokemon encounter (i.e: Dragonite lvl3)
 
 Most of 1.1.1's cheat code should work with this project.
 
 TODO:
-* Randomize Field objects
 * configurable seed
 * configurable lengedary
 * (raise an issue if you have any suggestion) ...

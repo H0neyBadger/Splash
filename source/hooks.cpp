@@ -96,6 +96,16 @@ extern "C" void hook_Initialize() {
                             *item_no = (float)item->GetRandom((uint16_t)*item_no);
                         }
                         break;
+                    case 60:  // hide_item
+                        if (args->m_Items[1].fields.argType != 2 || args->m_Items[1].fields.data != 234) {
+                            break;
+                        }
+                        if (alen == 3 && args->m_Items[2].fields.argType == 1) {
+                            // type arg == 1 ? is float stored in int
+                            float* item_no = (float*)&(args->m_Items[2].fields.data);
+                            *item_no = (float)item->GetRandom((uint16_t)*item_no);
+                        }
+                        break;
                 }
             }
         }
